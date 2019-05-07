@@ -3,8 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="statemachineScannerConfigurer" class="com.kxtx.fsm.spring.StatemachineScannerConfigurer">
-        <property name="basePackages" value="com.kxtx.fsm"/>
-        <!--<property name="annotationClz" value="com.kxtx.fsm.spring.annotation.StatemachineService"/>-->
+    <bean id="statemachineScannerConfigurer" class="com.github.middleware.fsm.spring.StatemachineScannerConfigurer">
+        <property name="basePackages" value="com.github.middleware.fsm"/>
+        <!--<property name="annotationClz" value="StatemachineService"/>-->
     </bean>
 </beans>

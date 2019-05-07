@@ -17,8 +17,9 @@
 # 项目实践
 ## 项目结构设计
 ```html
-│  │  └─com
-│  │      └─kxtx
+│  │  com
+│  │  └─github
+│  │      └─middleware
 │  │          └─fsm
 │  │              ├─builder				构建状态机，依赖core,excption,filter,config
 │  │              │  ├─chain
@@ -352,18 +353,12 @@ public class QuickStart_test {
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="statemachineScannerConfigurer" class="com.kxtx.fsm.spring.StatemachineScannerConfigurer">
-        <property name="basePackages" value="com.kxtx.fsm"/>
-        <!--<property name="annotationClz" value="com.kxtx.fsm.spring.annotation.StatemachineService"/>-->
+    <bean id="statemachineScannerConfigurer" class="StatemachineScannerConfigurer">
+        <property name="basePackages" value="com.github.middleware.fsm"/>
+        StatemachineService
     </bean>
 </beans>
-```
-```java
-**
- * step1
- */
-@States({
-        @State(name = "A", isInitial = true),
+`StatemachineServicee(name = "A", isInitial = true),
         @State(name = "A1", entryMethod = "enterA1", exitMethod = "exitA1"),
         @State(name = "A2", entryMethod = "enterA2", exitMethod = "exitA2"),
         @State(name = "A3", entryMethod = "enterA3", exitMethod = "exitA3"),
@@ -551,6 +546,6 @@ public class QuickStartV2_test {
 ```
 # Q&A
 ## 如何保证线程安全？
-KxtxStateMachine本身是单列模式的实现，处理是非常快的，为了不影响性能，它不保证严格意义上的线程安全，为了不影响业务的使用，使用方可以在StateMachineImpl中添加控制即可。
+j-StateMachine本身是单列模式的实现，处理是非常快的，为了不影响性能，它不保证严格意义上的线程安全，为了不影响业务的使用，使用方可以在StateMachineImpl中添加控制即可。
 ## 如何使用内嵌事务是否有影响？
-KxtxStateMachine本身宿主在业务系统中（接入方），和业务请求方通一个线程，有些东西保存在ThreadLocal，因此不影响业务方事务的个性化需求
+j-StateMachine本身宿主在业务系统中（接入方），和业务请求方通一个线程，有些东西保存在ThreadLocal，因此不影响业务方事务的个性化需求
